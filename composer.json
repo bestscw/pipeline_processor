@@ -1,0 +1,33 @@
+{
+  "name": "wildfire/pipeline_processor",
+  "type": "library",
+  "description": "多管道处理器",
+  "keywords": ["pipeline_processor", "多管道处理器"],
+  "homepage": "https://github.com/bestscw/pipeline_processor",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "wildfire",
+      "email": "bestscw@qq.com",
+      "homepage": "https://github.com/bestscw"
+    }
+  ],
+   "require": {
+     "php": ">= 5.5",
+     "monolog/monolog": "^1.0",
+     "guzzlehttp/guzzle": "~6.0"
+   },
+   "require-dev": {
+     "phpunit/phpunit": "4.5.*"
+   },
+   "autoload": {
+     "psr-4": {
+       "PipelineProcessor\\": "src/"
+     }
+   },
+   "autoload-dev": {
+     "psr-4": {
+       "PipelineProcessor\\Tests\\": "tests/"
+     }
+   }
+}
