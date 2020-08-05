@@ -30,5 +30,5 @@
        "PipelineProcessor\\Tests\\": "tests/"
      }
    },
-   "minimum-stability": "v0.1"
+   "minimum-stability": "stable"
 }
