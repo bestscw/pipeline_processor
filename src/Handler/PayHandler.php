@@ -8,6 +8,6 @@ class PayHandler extends AbstractHandler
 {
     protected function perform($record)
     {
-        $this->getLogger()->info($record);
+        $this->getLogger()->info("",$record);
     }
 }
