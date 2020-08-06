@@ -2,10 +2,9 @@
 
 namespace PipelineProcessor\Handler;
 
-require_once 'HandlerInterface.php';
-
 use Exception;
 use PipelineProcessor\Handler\HandlerInterface;
+use PipelineProcessor\Container\LoggerTrait;
 
 /**
  * Job处理抽象类
@@ -16,6 +15,8 @@ use PipelineProcessor\Handler\HandlerInterface;
 abstract class AbstractHandler implements HandlerInterface
 {
 
+    use LoggerTrait;
+    
     /**
      * @var string Job唯一标识
      */
@@ -49,6 +50,7 @@ abstract class AbstractHandler implements HandlerInterface
         try {
             $this->perform($record);
         } catch (Exception $exception) {
+            $this->getLogger()->info($exception->getMessage());
         }
 
         $this->tearDown();

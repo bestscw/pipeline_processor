@@ -4,9 +4,11 @@ namespace PipelineProcessor;
 use PipelineProcessor\Handler\HandlerInterface;
 use PipelineProcessor\Handler\DefaultHandler;
 use Psr\Log\InvalidArgumentException;
-
+use PipelineProcessor\Container\LoggerTrait;
 
 class PipelineProcessor{
+    
+    use LoggerTrait;
     
     /**
      * Detailed debug information
@@ -299,6 +301,8 @@ class PipelineProcessor{
      */
     protected function handleException(\Exception $e, array $record)
     {
+        $this->getLogger()->info($e->getMessage());
+        
         if (!$this->exceptionHandler) {
             throw $e;
         }

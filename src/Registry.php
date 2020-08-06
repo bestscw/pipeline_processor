@@ -86,7 +86,7 @@ class Registry
      */
     public static function removeLogger($logger)
     {
-        if ($logger instanceof DelayQueue) {
+        if ($logger instanceof PipelineProcessor) {
             if (false !== ($idx = array_search($logger, self::$loggers, true))) {
                 unset(self::$loggers[$idx]);
             }
