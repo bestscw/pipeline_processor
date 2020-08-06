@@ -24,24 +24,21 @@ use \PipelineProcessor\Handler\OrderHandler;
 use \PipelineProcessor\Handler\PayHandler;
 use \PipelineProcessor\Registry;
 
-//创建一些处理器
-$order = new \PipelineProcessor\Handler\OrderHandler();
+// 创建一些处理器
+$order = new OrderHandler();
 $pay = new PayHandler();
 
 //创建一些通道
-$application = new \PipelineProcessor\PipelineProcessor('application');
-$api = new \PipelineProcessor\PipelineProcessor('api');
+$application = new PipelineProcessor('application');
+$api = new PipelineProcessor('api');
 
 // 或者克隆第一个，只是改变下通道
 $security = $api->withName('security');
 
 //对通道应用哪些处理器
 $application->pushHandler($pay);
-$application->pushHandler($order);
-
 $api->pushHandler($pay);
 $security->pushHandler($pay);
-
 
 $application1 = $application->withName('application1');
 $api1 = $application->withName('api1');
@@ -76,9 +73,7 @@ class OrderHandler extends AbstractHandler
 {
     protected function perform($record)
     {
-	   echo "Order OK\n";
-	   print_r($record);
-	   echo "\n";
+        $this->getLogger()->info($record);
     }
 }
 
